@@ -45,7 +45,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
+
+            document.addEventListener('livewire:navigated', function () {
                 let table = $('#episodesTable').dataTable({
                     processing: true,
                     serverSide: true,
@@ -64,6 +65,28 @@
                     ]
                 });
             });
+
+            //$(document).ready(function () {
+                //initDataTable();
+
+                /*$(document).on('livewire:navigate', (event) => {
+                    console.log(event);
+                    $('#episodesTable').DataTable({
+                        ajax: "{{ route('episodes_list') }}",
+                        columns: [
+                            {data: 'id'},
+                            {data: 'tvshow'},
+                            {data: 'season'},
+                            {data: 'name'},
+                            {data: 'number'},
+                            {data: 'thumbnail'},
+                            {data: 'originalFileName'},
+                            {data: 'description'},
+                            {data: 'action'}
+                        ]
+                    })
+                })*/
+            //});
         </script>
     @endsection
 </x-app-layout>

@@ -16,19 +16,23 @@
                         </div>
                         <div class="row">
                             <h2 class="mb-4">Existing stories</h2>
-                            <table class="table table-bordered table-striped" id="episodesTable">
+                            <table class="table table-bordered table-striped" id="storiesTable">
                                 <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>TV Show</th>
-                                    <th>Season</th>
-                                    <th>Name</th>
-                                    <th>Episode number</th>
-                                    <th>Thumbnail</th>
-                                    <th>Original file name</th>
-                                    <th>Description</th>
-                                    <th></th>
-                                </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order number</th>
+                                        <th>Season</th>
+                                        <th>Episode number</th>
+                                        <th>Episode title</th>
+                                        <th>TV Show</th>
+                                        <th>Movie</th>
+                                        <th></th>
+                                        <!--<th>#</th>
+                                        <th>Order number</th>
+                                        <th>Episode</th>
+                                        <th>Movie</th>
+                                        <th>Tools</th>-->
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
@@ -45,25 +49,38 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                let table = $('#episodesTable').dataTable({
+            //$(document).ready(function () {
+            document.addEventListener('livewire:navigated', function () {
+                let table = $('#storiesTable').dataTable({
                     processing: true,
                     serverSide: true,
                     method: 'get',
-                    ajax: "{{ route('episodes_list') }}",
+                    ajax: "{{ route('stories_list') }}",
                     columns: [
                         {data: 'id'},
-                        {data: 'tvshow'},
+                        {data: 'orderNum'},
                         {data: 'season'},
-                        {data: 'name'},
                         {data: 'number'},
-                        {data: 'thumbnail'},
-                        {data: 'originalFileName'},
-                        {data: 'description'},
+                        {data: 'name'},
+                        {data: 'tvshow'},
+                        {data: 'movie'},
                         {data: 'action'}
+
+                        /*{data: 'episode'},
+                        {data: 'movie'},
+                        {data: 'action'}*/
                     ]
                 });
+
+
             });
+
+            document.addEventListener('livewire.navigated', () => {
+                $('.switcher').on('click', function() {
+                    alert($(this).data("rowId"));
+                })
+            });
+
         </script>
     @endsection
 </x-app-layout>

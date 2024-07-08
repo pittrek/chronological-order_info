@@ -12,25 +12,22 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("Movie list") }}
                     <div>
-                        <a href="{{ route('movies.create') }}">+</a>
+                        <a href="{{ route('movies.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Add new movie</a>
                     </div>
-                    @foreach ($movies as $movie)
-                        {{ $movie->name }}
-                    @endforeach
                     <div class="row">
-                        <h2 class="mb-4">Existing movies</h2>
+                        <h2 class="mb-4 text-center">Existing movies</h2>
                         <table class="table table-bordered table-striped" id="movieTable">
                             <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Year</th>
-                                <th>Version</th>
-                                <th>Description</th>
-                                <th>Thumbnail</th>
-                                <th>Shortcut</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Year</th>
+                                    <th>Version</th>
+                                    <th>Description</th>
+                                    <th>Thumbnail</th>
+                                    <th>Shortcut</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
                             </tbody>
@@ -68,7 +65,8 @@
             }
 
 
-            $(document).ready(function () {
+            //$(document).ready(function () {
+            document.addEventListener('livewire:navigated', function () {
                 initDataTable();
             });
 

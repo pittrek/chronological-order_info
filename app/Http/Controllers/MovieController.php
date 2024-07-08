@@ -58,7 +58,7 @@ class MovieController extends Controller
             $movie->originalFileName = $request->file('thumbnail')->getClientOriginalName();
         }
         $movie->save();
-        return redirect()->route('movies.show', ['movie' => $movie->id]);
+        return redirect()->route('movies.index', ['movie' => $movie->id]);
     }
 
     /**
@@ -66,7 +66,7 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        dd($movie);
+        //dd($movie);
     }
 
     public function showImage(int $id)

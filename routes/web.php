@@ -24,6 +24,7 @@ Route::resource('seasons', SeasonController::class)->middleware(['auth', 'verifi
 Route::get('episodes/list', [EpisodeController::class, 'list'])->name('episodes_list');
 Route::resource('episodes', EpisodeController::class)->middleware(['auth', 'verified']);
 Route::get('stories/list', [StoryController::class, 'list'])->name('stories_list');
+Route::get('stories/list/franchise/{franchise}', [StoryController::class, 'listFranchise'])->name('stories.listFranchise');
 Route::resource('stories', StoryController::class)->middleware(['auth', 'verified']);
 Route::get('franchises/list', [FranchiseController::class, 'list'])->name('franchises_list');
 Route::resource('franchises', FranchiseController::class)->middleware(['auth', 'verified']);

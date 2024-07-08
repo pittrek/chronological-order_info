@@ -12,11 +12,8 @@
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         {{ __("TV Show list") }}
                         <div>
-                            <a href="{{ route('tvshows.create') }}">+</a>
+                            <a href="{{ route('tvshows.create') }}" class="btn btn-success">+ Add TV Show</a>
                         </div>
-                        @foreach ($tvshows as $tvShow)
-                            {{ $tvShow->name }}
-                        @endforeach
                         <div class="row">
                             <h2 class="mb-4">Existing TV shows</h2>
                             <table class="table table-bordered table-striped" id="tvShowTable">
@@ -46,7 +43,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
+            //$(document).ready(function () {
+            document.addEventListener('livewire:navigated', function () {
                 let table = $('#tvShowTable').dataTable({
                     processing: true,
                     serverSide: true,

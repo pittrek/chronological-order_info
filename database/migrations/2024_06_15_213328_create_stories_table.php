@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('episode_id')->constrained()->nullable();
-            $table->foreignId('movie_id')->constrained()->nullable();
+            $table->foreignId('episode_id')->nullable()->constrained();
+            $table->foreignId('movie_id')->nullable()->constrained();
             $table->integer('orderNum');
-            $table->foreignId('franchise_id')->constrained()->nullable();
+            $table->foreignId('franchise_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
